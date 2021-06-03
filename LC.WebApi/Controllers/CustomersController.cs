@@ -1,9 +1,7 @@
-﻿using LC_Core;
+﻿using LC.Manager.Interfaces;
+using LC_Core;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using System.Threading.Tasks;
 
 namespace LC.WebApi.Controllers
 {
@@ -11,20 +9,25 @@ namespace LC.WebApi.Controllers
     [ApiController]
     public class CustomersController : ControllerBase
     {
+        private readonly ICustomerManager customerManager;
+
+        public CustomersController(ICustomerManager customerManager)
+        {
+            this.customerManager = customerManager;
+        }
+
         // GET: api/<CustomerssController>
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            return Ok(new List<Customer>() {
-                new Customer() { Id = 1, Name = "Ruan", BirthDate = Convert.ToDateTime("27/09/1995")}
-                , new Customer() { Id = 2, Name = "Micilene", BirthDate = Convert.ToDateTime("05/01/1979")}});
+            return Ok(await customerManager.GetCustomersAsync());
         }
 
         // GET api/<CustomerssController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            return "value";
+            return Ok(await customerManager.GetCustomerAsync(id));
         }
 
         // POST api/<CustomerssController>
