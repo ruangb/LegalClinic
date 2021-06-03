@@ -1,5 +1,5 @@
-﻿using LC.Manager.Interfaces;
-using LC.Core;
+﻿using LC.Core;
+using LC.Manager.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -16,36 +16,43 @@ namespace LC.WebApi.Controllers
             this.customerManager = customerManager;
         }
 
-        // GET: api/<CustomerssController>
         [HttpGet]
         public async Task<IActionResult> Get()
         {
             return Ok(await customerManager.GetCustomersAsync());
         }
 
-        // GET api/<CustomerssController>/5
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
             return Ok(await customerManager.GetCustomerAsync(id));
         }
 
-        // POST api/<CustomerssController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> Post([FromBody] Customer customer)
         {
-        }
+            var insertedCustomer = await customerManager.InsertCustomerAsync(customer);
 
-        // PUT api/<CustomerssController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+            return CreatedAtAction(nameof(Get), new { id = customer.Id }, customer);
+        }
+        
+        [HttpPut]
+        public async Task<IActionResult> Put([FromBody] Customer customer)
         {
-        }
+            var updatedCustomer = await customerManager.UpdateCustomerAsync(customer);
 
-        // DELETE api/<CustomerssController>/5
+            if (updatedCustomer == null)
+                return NotFound();
+
+            return Ok(updatedCustomer);
+        }
+ 
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
+            await customerManager.DeleteCustomerAsync(id);
+            
+            return NoContent();
         }
     }
 }

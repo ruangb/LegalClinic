@@ -6,7 +6,10 @@ namespace LC.Manager.Interfaces
 {
     public interface ICustomerRepository
     {
-       Task<IEnumerable<Customer>> GetCustomerAsync();
-       Task<Customer> GetCustomerAsync(int id);
+        Task<IEnumerable<Customer>> GetCustomersAsync();
+        Task<Customer> GetCustomerAsync(int id);
+        Task<Customer> InsertCustomerAsync(Customer customer);
+        Task<Customer> UpdateCustomerAsync(Customer customer);
+        Task DeleteCustomerAsync(int id);
     }
 }
