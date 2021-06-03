@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LC_Core\LC.Core.csproj" />
+    <ProjectReference Include="..\LC_Manager\LC.Manager.csproj" />
   </ItemGroup>
 
 </Project>
