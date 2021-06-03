@@ -1,5 +1,5 @@
 ﻿using LC.Manager.Interfaces;
-using LC_Core;
+using LC.Core;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 

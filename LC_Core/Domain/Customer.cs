@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LC_Core
+namespace LC.Core
 {
     public class Customer
     {

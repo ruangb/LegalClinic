@@ -1,7 +1,7 @@
+using LC.Data;
 using LC.Data.Repository;
 using LC.Manager.Implementation;
 using LC.Manager.Interfaces;
-using LC_Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;

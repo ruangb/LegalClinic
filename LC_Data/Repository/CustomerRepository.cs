@@ -1,5 +1,4 @@
-﻿using LC_Core;
-using LC_Data;
+﻿using LC.Core;
 using LC.Manager.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;

@@ -1,7 +1,7 @@
-﻿using LC_Core;
+﻿using LC.Core;
 using Microsoft.EntityFrameworkCore;
 
-namespace LC_Data
+namespace LC.Data
 {
     public class LCContext : DbContext
     {
