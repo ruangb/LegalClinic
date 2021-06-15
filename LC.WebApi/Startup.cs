@@ -1,7 +1,9 @@
+using FluentValidation.AspNetCore;
 using LC.Data;
 using LC.Data.Repository;
 using LC.Manager.Implementation;
 using LC.Manager.Interfaces;
+using LC.Manager.Validator;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -23,7 +25,7 @@ namespace LC.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers().AddFluentValidation(p => p.RegisterValidatorsFromAssemblyContaining<CustomerValidator>());
 
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<ICustomerManager, CustomerManager>();
