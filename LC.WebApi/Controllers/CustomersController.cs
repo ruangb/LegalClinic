@@ -1,6 +1,5 @@
 ﻿using LC.Core;
 using LC.Manager.Interfaces;
-using LC.Manager.Validator;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
