@@ -3,6 +3,7 @@ using LC.Data;
 using LC.Data.Repository;
 using LC.Manager.Implementation;
 using LC.Manager.Interfaces;
+using LC.Manager.Mappings;
 using LC.Manager.Validator;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -25,7 +26,9 @@ namespace LC.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers().AddFluentValidation(p => p.RegisterValidatorsFromAssemblyContaining<CustomerValidator>());
+            services.AddControllers().AddFluentValidation(p => p.RegisterValidatorsFromAssemblyContaining<MvCustomerValidator>());
+
+            services.AddAutoMapper(typeof(MvCustomerMappingProfile));
 
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<ICustomerManager, CustomerManager>();

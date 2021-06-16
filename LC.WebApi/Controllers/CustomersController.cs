@@ -1,4 +1,5 @@
-﻿using LC.Core;
+﻿using LC.Core.Shared.ModelViews;
+using LC.Core;
 using LC.Manager.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -29,11 +30,11 @@ namespace LC.WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Customer customer)
+        public async Task<IActionResult> Post([FromBody] MvCustomer mvCustomer)
         {
-            var insertedCustomer = await customerManager.InsertCustomerAsync(customer);
+            var insertedCustomer = await customerManager.InsertCustomerAsync(mvCustomer);
 
-            return CreatedAtAction(nameof(Get), new { id = customer.Id }, customer);
+            return CreatedAtAction(nameof(Get), new { id = insertedCustomer.Id }, insertedCustomer);
         }
         
         [HttpPut]

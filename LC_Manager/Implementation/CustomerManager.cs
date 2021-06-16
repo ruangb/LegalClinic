@@ -1,4 +1,6 @@
-﻿using LC.Core;
+﻿using AutoMapper;
+using LC.Core;
+using LC.Core.Shared.ModelViews;
 using LC.Manager.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -8,10 +10,12 @@ namespace LC.Manager.Implementation
     public class CustomerManager : ICustomerManager
     {
         private readonly ICustomerRepository customerRepository;
+        private readonly IMapper mapper;
 
-        public CustomerManager(ICustomerRepository customerRepository)
+        public CustomerManager(ICustomerRepository customerRepository, IMapper mapper)
         {
             this.customerRepository = customerRepository;
+            this.mapper = mapper;
         }
 
         public async Task<IEnumerable<Customer>> GetCustomersAsync()
@@ -24,8 +28,10 @@ namespace LC.Manager.Implementation
             return await customerRepository.GetCustomerAsync(id);
         }
 
-        public async Task<Customer> InsertCustomerAsync(Customer customer)
+        public async Task<Customer> InsertCustomerAsync(MvCustomer mvCustomer)
         {
+            var customer = mapper.Map<Customer>(mvCustomer);
+
             return await customerRepository.InsertCustomerAsync(customer);
         }
 

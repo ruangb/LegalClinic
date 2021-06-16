@@ -1,17 +1,13 @@
 ﻿using System;
 
-namespace LC.Core
+namespace LC.Core.Shared.ModelViews
 {
-    public class Customer
+    public class MvCustomer
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public DateTime BirthDate { get; set; }
         public char Gender { get; set; }
         public string Phone { get; set; }
         public string Document { get; set; }
-        public DateTime CreateDate { get; set; }
-        public DateTime? UpdateDate { get; set; }
-
     }
 }

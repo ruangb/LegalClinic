@@ -1,4 +1,5 @@
 ﻿using LC.Core;
+using LC.Core.Shared.ModelViews;
 using LC.Manager.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;

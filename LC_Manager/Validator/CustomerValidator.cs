@@ -1,12 +1,12 @@
 ﻿using System;
-using LC.Core;
 using FluentValidation;
+using LC.Core.Shared.ModelViews;
 
 namespace LC.Manager.Validator
 {
-    public class CustomerValidator : AbstractValidator<Customer>
+    public class MvCustomerValidator : AbstractValidator<MvCustomer>
     {
-        public CustomerValidator()
+        public MvCustomerValidator()
         {
             RuleFor(x => x.Name).NotNull().NotEmpty().MinimumLength(10).MaximumLength(150);
             RuleFor(x => x.BirthDate).NotNull().NotEmpty().LessThan(DateTime.Now).GreaterThan(DateTime.Now.AddYears(-130));
