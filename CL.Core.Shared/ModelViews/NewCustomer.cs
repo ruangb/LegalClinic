@@ -2,7 +2,7 @@
 
 namespace LC.Core.Shared.ModelViews
 {
-    public class MvCustomer
+    public class NewCustomer
     {
         public string Name { get; set; }
         public DateTime BirthDate { get; set; }

@@ -4,9 +4,9 @@ using LC.Core.Shared.ModelViews;
 
 namespace LC.Manager.Validator
 {
-    public class MvCustomerValidator : AbstractValidator<MvCustomer>
+    public class NewCustomerValidator : AbstractValidator<NewCustomer>
     {
-        public MvCustomerValidator()
+        public NewCustomerValidator()
         {
             RuleFor(x => x.Name).NotNull().NotEmpty().MinimumLength(10).MaximumLength(150);
             RuleFor(x => x.BirthDate).NotNull().NotEmpty().LessThan(DateTime.Now).GreaterThan(DateTime.Now.AddYears(-130));

@@ -5,12 +5,12 @@ using System;
 
 namespace LC.Manager.Mappings
 {
-    public class MvCustomerMappingProfile : Profile
+    public class UpdateCustomerMappingProfile : Profile
     {
-        public MvCustomerMappingProfile()
+        public UpdateCustomerMappingProfile()
         {
-            CreateMap<MvCustomer, Customer>()
-                .ForMember(d => d.CreateDate, o => o.MapFrom(x => DateTime.Now))
+            CreateMap<UpdateCustomer, Customer>()
+                .ForMember(d => d.UpdateDate, o => o.MapFrom(x => DateTime.Now))
                 .ForMember(d => d.BirthDate, o => o.MapFrom(x => x.BirthDate.Date));
         }
     }

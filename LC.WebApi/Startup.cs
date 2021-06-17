@@ -26,9 +26,13 @@ namespace LC.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers().AddFluentValidation(p => p.RegisterValidatorsFromAssemblyContaining<MvCustomerValidator>());
+            services.AddControllers().AddFluentValidation(p => 
+            {
+                p.RegisterValidatorsFromAssemblyContaining<NewCustomerValidator>();
+                p.RegisterValidatorsFromAssemblyContaining<UpdateCustomerValidator>();
+            });
 
-            services.AddAutoMapper(typeof(MvCustomerMappingProfile));
+            services.AddAutoMapper(typeof(NewCustomerMappingProfile), typeof(UpdateCustomerMappingProfile));
 
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<ICustomerManager, CustomerManager>();

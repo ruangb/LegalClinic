@@ -30,17 +30,17 @@ namespace LC.WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] MvCustomer mvCustomer)
+        public async Task<IActionResult> Post([FromBody] NewCustomer newCustomer)
         {
-            var insertedCustomer = await customerManager.InsertCustomerAsync(mvCustomer);
+            var insertedCustomer = await customerManager.InsertCustomerAsync(newCustomer);
 
             return CreatedAtAction(nameof(Get), new { id = insertedCustomer.Id }, insertedCustomer);
         }
         
         [HttpPut]
-        public async Task<IActionResult> Put([FromBody] Customer customer)
+        public async Task<IActionResult> Put([FromBody] UpdateCustomer updateCustomer)
         {
-            var updatedCustomer = await customerManager.UpdateCustomerAsync(customer);
+            var updatedCustomer = await customerManager.UpdateCustomerAsync(updateCustomer);
 
             if (updatedCustomer == null)
                 return NotFound();

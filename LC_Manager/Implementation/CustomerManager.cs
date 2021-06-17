@@ -28,15 +28,17 @@ namespace LC.Manager.Implementation
             return await customerRepository.GetCustomerAsync(id);
         }
 
-        public async Task<Customer> InsertCustomerAsync(MvCustomer mvCustomer)
+        public async Task<Customer> InsertCustomerAsync(NewCustomer newCustomer)
         {
-            var customer = mapper.Map<Customer>(mvCustomer);
+            var customer = mapper.Map<Customer>(newCustomer);
 
             return await customerRepository.InsertCustomerAsync(customer);
         }
 
-        public async Task<Customer> UpdateCustomerAsync(Customer customer)
+        public async Task<Customer> UpdateCustomerAsync(UpdateCustomer updateCustomer)
         {
+            var customer = mapper.Map<Customer>(updateCustomer);
+         
             return await customerRepository.UpdateCustomerAsync(customer);
         }
 
