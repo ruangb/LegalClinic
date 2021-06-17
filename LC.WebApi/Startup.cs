@@ -33,13 +33,14 @@ namespace LC.WebApi
                 p.RegisterValidatorsFromAssemblyContaining<UpdateCustomerValidator>();
             });
 
-            services.AddAutoMapper(typeof(NewCustomerMappingProfile), typeof(UpdateCustomerMappingProfile));
 
             services.AddDbContext<LCContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LCConnection")));
 
             services.AddDependencyInjectionConfiguration();
 
             services.AddSwaggerConfiguration();
+
+            services.AddAutoMapperConfig();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
