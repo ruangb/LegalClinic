@@ -27,12 +27,9 @@ namespace LC.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers().AddFluentValidation(p => 
-            {
-                p.RegisterValidatorsFromAssemblyContaining<NewCustomerValidator>();
-                p.RegisterValidatorsFromAssemblyContaining<UpdateCustomerValidator>();
-            });
+            services.AddControllers();
 
+            services.AddFluentValidationConfiguration();
 
             services.AddDbContext<LCContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LCConnection")));
 
