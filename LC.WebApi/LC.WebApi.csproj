@@ -6,6 +6,10 @@
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\DEV\LegalClinic\LC.WebApi\LC.WebApi.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="automapper" Version="10.1.1" />
     <PackageReference Include="automapper.extensions.microsoft.dependencyinjection" Version="8.1.1" />
