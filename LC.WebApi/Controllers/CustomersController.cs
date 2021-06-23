@@ -1,5 +1,7 @@
-﻿using LC.Core.Shared.ModelViews;
+﻿using LC.Core;
+using LC.Core.Shared.ModelViews;
 using LC.Manager.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -18,18 +20,23 @@ namespace LC.WebApi.Controllers
 
         /// <summary>
         /// Return all the customers in the database
-        /// </summary>
+        /// </summary> 
         [HttpGet]
+        [ProducesResponseType(typeof(Customer), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Get()
         {
             return Ok(await customerManager.GetCustomersAsync());
         }
 
         /// <summary>
-        /// return a customer searched by id
+        /// Return a customer searched by id
         /// </summary>
         /// <param name="id" example="1">customer id</param>
         [HttpGet("{id}")]
+        [ProducesResponseType(typeof(Customer), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Get(int id)
         {
             return Ok(await customerManager.GetCustomerAsync(id));
@@ -40,6 +47,8 @@ namespace LC.WebApi.Controllers
         /// </summary>
         /// <param name="newCustomer">a new customer to insert</param>
         [HttpPost]
+        [ProducesResponseType(typeof(Customer), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Post([FromBody] NewCustomer newCustomer)
         {
             var insertedCustomer = await customerManager.InsertCustomerAsync(newCustomer);
@@ -48,10 +57,13 @@ namespace LC.WebApi.Controllers
         }
         
         /// <summary>
-        /// update a customer
+        /// Update a customer
         /// </summary>
         /// <param name="updateCustomer">custober to be updated</param>
         [HttpPut]
+        [ProducesResponseType(typeof(Customer), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Put([FromBody] UpdateCustomer updateCustomer)
         {
             var updatedCustomer = await customerManager.UpdateCustomerAsync(updateCustomer);
@@ -63,10 +75,13 @@ namespace LC.WebApi.Controllers
         }
  
         /// <summary>
-        /// delete customer by id
+        /// Delete customer by id
         /// </summary>
         /// <param name="id">customer id</param>
         [HttpDelete("{id}")]
+        [ProducesResponseType(typeof(Customer), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Delete(int id)
         {
             await customerManager.DeleteCustomerAsync(id);

@@ -7,11 +7,11 @@
         <member name="M:LC.WebApi.Controllers.CustomersController.Get">
             <summary>
             Return all the customers in the database
-            </summary>
+            </summary> 
         </member>
         <member name="M:LC.WebApi.Controllers.CustomersController.Get(System.Int32)">
             <summary>
-            return a customer searched by id
+            Return a customer searched by id
             </summary>
             <param name="id" example="1">customer id</param>
         </member>
@@ -23,13 +23,13 @@
         </member>
         <member name="M:LC.WebApi.Controllers.CustomersController.Put(LC.Core.Shared.ModelViews.UpdateCustomer)">
             <summary>
-            update a customer
+            Update a customer
             </summary>
             <param name="updateCustomer">custober to be updated</param>
         </member>
         <member name="M:LC.WebApi.Controllers.CustomersController.Delete(System.Int32)">
             <summary>
-            delete customer by id
+            Delete customer by id
             </summary>
             <param name="id">customer id</param>
         </member>
