@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LC.Core.Shared</name>
+    </assembly>
+    <members>
+        <member name="T:LC.Core.Shared.ModelViews.NewCustomer">
+            <summary>
+            Object used to create a new customer
+            </summary>
+        </member>
+        <member name="P:LC.Core.Shared.ModelViews.NewCustomer.Name">
+            <summary>
+            Customer name 
+            </summary>
+        </member>
+        <member name="P:LC.Core.Shared.ModelViews.NewCustomer.BirthDate">
+            <summary>
+            Customer birth date 
+            </summary>
+            <example>1980-01-01</example>
+        </member>
+        <member name="P:LC.Core.Shared.ModelViews.NewCustomer.Gender">
+            <summary>
+            Customer gender
+            </summary>
+            <example>M</example>
+        </member>
+        <member name="P:LC.Core.Shared.ModelViews.NewCustomer.Phone">
+            <summary>
+            Customer phone
+            </summary>
+            <example>11999999999</example>
+        </member>
+        <member name="P:LC.Core.Shared.ModelViews.NewCustomer.Document">
+            <summary>
+            Customer document
+            </summary>
+        </member>
+    </members>
+</doc>

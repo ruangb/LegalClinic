@@ -36,6 +36,8 @@ namespace LC.WebApi.Configuration
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
+                xmlPath = Path.Combine(AppContext.BaseDirectory, "LC.Core.Shared.xml");
+                c.IncludeXmlComments(xmlPath);  
             });
         }
 
