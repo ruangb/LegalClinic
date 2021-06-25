@@ -34,5 +34,6 @@ namespace LC.Core.Shared.ModelViews
         /// Customer document
         /// </summary>
         public string Document { get; set; }
+        public string Email { get; set; }
     }
 }

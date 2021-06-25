@@ -13,6 +13,7 @@ namespace LC.Manager.Validator
             RuleFor(x => x.Document).NotNull().NotEmpty().MinimumLength(4).MaximumLength(14);
             RuleFor(x => x.Phone).NotNull().NotEmpty().Matches("[1-9][0-9][0-9]{10}").WithMessage("O telefone tem que ter o formato[2-9][0-9]{10}");
             RuleFor(x => x.Gender).NotNull().NotEmpty().Must(IsMorF).WithMessage("O sexo precisa ser M ou F");
+            RuleFor(x => x.Email).NotNull().NotEmpty().EmailAddress();
         }
 
         private bool IsMorF(char gender)

@@ -1,14 +1,6 @@
-using FluentValidation.AspNetCore;
-using LC.Data;
-using LC.Data.Repository;
-using LC.Manager.Implementation;
-using LC.Manager.Interfaces;
-using LC.Manager.Mappings;
-using LC.Manager.Validator;
 using LC.WebApi.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -31,7 +23,7 @@ namespace LC.WebApi
 
             services.AddFluentValidationConfiguration();
 
-            services.AddDbContext<LCContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LCConnection")));
+            services.AddDataBaseConfiguration(Configuration);
 
             services.AddDependencyInjectionConfiguration();
 
