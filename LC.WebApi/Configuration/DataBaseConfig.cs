@@ -19,6 +19,7 @@ namespace LC.WebApi.Configuration
             using var context = serviceScope.ServiceProvider.GetService<LCContext>();
 
             context.Database.Migrate();
+            context.Database.EnsureCreated();
         }
     }
 }
