@@ -40,6 +40,8 @@ namespace LC.WebApi
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseDataBaseConfiguration();
+
             app.UseSwaggerConfiguration();
 
             app.UseHttpsRedirection();
