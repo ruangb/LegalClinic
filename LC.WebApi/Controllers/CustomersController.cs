@@ -3,6 +3,7 @@ using LC.Core.Shared.ModelViews;
 using LC.Manager.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
 namespace LC.WebApi.Controllers
@@ -12,10 +13,12 @@ namespace LC.WebApi.Controllers
     public class CustomersController : ControllerBase
     {
         private readonly ICustomerManager customerManager;
+        private readonly ILogger<CustomersController> logger;
 
-        public CustomersController(ICustomerManager customerManager)
+        public CustomersController(ICustomerManager customerManager, ILogger<CustomersController> logger)
         {
             this.customerManager = customerManager;
+            this.logger = logger;
         }
 
         /// <summary>
@@ -51,6 +54,8 @@ namespace LC.WebApi.Controllers
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Post([FromBody] NewCustomer newCustomer)
         {
+            logger.LogInformation("Foi solicitada a inserção de um novo cliente");
+
             var insertedCustomer = await customerManager.InsertCustomerAsync(newCustomer);
 
             return CreatedAtAction(nameof(Get), new { id = insertedCustomer.Id }, insertedCustomer);

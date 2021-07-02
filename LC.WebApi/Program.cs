@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using System;
+using System.IO;
 
 namespace LC.WebApi
 {
@@ -9,11 +11,13 @@ namespace LC.WebApi
     {
         public static void Main(string[] args)
         {
-            Log.Logger = new LoggerConfiguration()
-                        .Enrich.FromLogContext()
-                        .WriteTo.Console()
-                        .WriteTo.File("log.txt")
-                        .CreateLogger();
+            string environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .AddJsonFile($"appsettings.{environment}.json")
+                .Build();
 
             try
             {
