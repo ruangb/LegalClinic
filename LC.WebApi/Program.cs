@@ -11,13 +11,9 @@ namespace LC.WebApi
     {
         public static void Main(string[] args)
         {
-            string environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            IConfigurationRoot configuration = GetConfiguration();
 
-            var configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
-                .AddJsonFile($"appsettings.{environment}.json")
-                .Build();
+            ConfigureLog(configuration);
 
             try
             {
@@ -32,6 +28,25 @@ namespace LC.WebApi
             {
                 Log.CloseAndFlush();
             }
+        }
+
+        private static void ConfigureLog(IConfigurationRoot configuration)
+        {
+            Log.Logger = new LoggerConfiguration()
+                        .ReadFrom.Configuration(configuration)
+                        .CreateLogger();
+        }
+
+        private static IConfigurationRoot GetConfiguration()
+        {
+            string environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .AddJsonFile($"appsettings.{environment}.json")
+                .Build();
+            return configuration;
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

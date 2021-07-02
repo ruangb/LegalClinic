@@ -4,6 +4,7 @@ using LC.Manager.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SerilogTimings;
 using System.Threading.Tasks;
 
 namespace LC.WebApi.Controllers
@@ -54,9 +55,13 @@ namespace LC.WebApi.Controllers
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Post([FromBody] NewCustomer newCustomer)
         {
-            logger.LogInformation("Foi solicitada a inserção de um novo cliente");
+            Customer insertedCustomer;
 
-            var insertedCustomer = await customerManager.InsertCustomerAsync(newCustomer);
+            using (Operation.Time("Tempo de adição de um novo cliente"))
+            {
+                logger.LogInformation("Foi solicitada a inserção de um novo cliente");
+                insertedCustomer = await customerManager.InsertCustomerAsync(newCustomer);
+            }
 
             return CreatedAtAction(nameof(Get), new { id = insertedCustomer.Id }, insertedCustomer);
         }
