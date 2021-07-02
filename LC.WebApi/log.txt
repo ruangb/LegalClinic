@@ -1,0 +1,51 @@
+2021-07-01 21:24:19.041 -03:00 [INF] Iniciando a WebAPI
+2021-07-01 21:24:27.583 -03:00 [INF] Entity Framework Core 5.0.6 initialized 'LCContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-07-01 21:24:42.327 -03:00 [INF] Executed DbCommand (161ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2021-07-01 21:24:42.790 -03:00 [INF] Executed DbCommand (383ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2021-07-01 21:24:42.794 -03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2021-07-01 21:24:42.795 -03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2021-07-01 21:24:43.704 -03:00 [INF] Executed DbCommand (802ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2021-07-01 21:24:43.759 -03:00 [INF] No migrations were applied. The database is already up to date.
+2021-07-01 21:24:43.761 -03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2021-07-01 21:24:50.928 -03:00 [INF] Executed DbCommand (7,166ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2021-07-01 21:24:55.104 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-07-01 21:24:55.105 -03:00 [INF] Hosting environment: Development
+2021-07-01 21:24:55.105 -03:00 [INF] Content root path: C:\DEV\LegalClinic\LC.WebApi
+2021-07-01 21:24:56.932 -03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44375/  
+2021-07-01 21:24:59.743 -03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44375/index.html  
+2021-07-01 21:24:59.755 -03:00 [INF] Request finished in 2814.8939ms 301 
+2021-07-01 21:25:00.713 -03:00 [INF] Request finished in 969.5644ms 200 text/html;charset=utf-8
+2021-07-01 21:25:00.775 -03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44375/swagger-ui.css  
+2021-07-01 21:25:00.775 -03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44375/swagger-ui-standalone-preset.js  
+2021-07-01 21:25:00.775 -03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44375/swagger-ui-bundle.js  
+2021-07-01 21:25:01.604 -03:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2021-07-01 21:25:01.606 -03:00 [INF] Request finished in 831.6044ms 200 text/css
+2021-07-01 21:25:01.611 -03:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2021-07-01 21:25:01.611 -03:00 [INF] Request finished in 836.0964ms 200 application/javascript
+2021-07-01 21:25:02.040 -03:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2021-07-01 21:25:02.041 -03:00 [INF] Request finished in 1266.0758ms 200 application/javascript
+2021-07-01 21:25:06.090 -03:00 [INF] Request starting HTTP/1.1 GET https://localhost:44375/swagger-ui-standalone-preset.js.map  
+2021-07-01 21:25:06.327 -03:00 [INF] Request finished in 237.1482ms 404 

@@ -12,6 +12,7 @@ namespace LC.WebApi
             Log.Logger = new LoggerConfiguration()
                         .Enrich.FromLogContext()
                         .WriteTo.Console()
+                        .WriteTo.File("log.txt")
                         .CreateLogger();
 
             try
