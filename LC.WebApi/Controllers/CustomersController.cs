@@ -31,6 +31,7 @@ namespace LC.WebApi.Controllers
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Get()
         {
+            throw new System.Exception("Exceção teste");
             return Ok(await customerManager.GetCustomersAsync());
         }
 
