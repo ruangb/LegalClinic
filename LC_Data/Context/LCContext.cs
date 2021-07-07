@@ -1,4 +1,5 @@
 ﻿using LC.Core;
+using LC.Data.Configuration;
 using Microsoft.EntityFrameworkCore;
 
 namespace LC.Data
@@ -10,6 +11,13 @@ namespace LC.Data
         public LCContext(DbContextOptions options) : base(options)
         {
 
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.ApplyConfiguration(new CustomerConfiguration());
         }
     }
 }
