@@ -12,6 +12,6 @@ namespace LC.Core
         public string Document { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime? UpdateDate { get; set; }
-
+        public Address Address { get; set; }
     }
 }
