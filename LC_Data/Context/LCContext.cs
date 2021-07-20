@@ -7,6 +7,7 @@ namespace LC.Data
     public class LCContext : DbContext
     {
         public DbSet<Customer> Customers {get; set;}
+        public DbSet<Address> Addresses {get; set; }
 
         public LCContext(DbContextOptions options) : base(options)
         {
@@ -18,6 +19,7 @@ namespace LC.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.ApplyConfiguration(new CustomerConfiguration());
+            modelBuilder.ApplyConfiguration(new AddressConfiguration());
         }
     }
 }
