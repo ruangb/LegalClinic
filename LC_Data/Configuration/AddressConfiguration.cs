@@ -8,7 +8,7 @@ namespace LC.Data.Configuration
     {
         public void Configure(EntityTypeBuilder<Address> builder)
         {
-            builder.HasOne(p => p.Customer).WithOne(p => p.Address).HasForeignKey<Address>(p => p.CustomerId);
+            builder.HasKey(p => p.CustomerId);
         }
     }
 }
