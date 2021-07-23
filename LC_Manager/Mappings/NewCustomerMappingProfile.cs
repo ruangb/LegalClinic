@@ -12,6 +12,8 @@ namespace LC.Manager.Mappings
             CreateMap<NewCustomer, Customer>()
                 .ForMember(d => d.CreateDate, o => o.MapFrom(x => DateTime.Now))
                 .ForMember(d => d.BirthDate, o => o.MapFrom(x => x.BirthDate.Date));
+
+            CreateMap<NewAddress, Address>();
         }
     }
 }

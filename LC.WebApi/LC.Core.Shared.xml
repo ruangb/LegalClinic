@@ -4,6 +4,24 @@
         <name>LC.Core.Shared</name>
     </assembly>
     <members>
+        <member name="P:LC.Core.Shared.ModelViews.NewAddress.ZipCode">
+            <example>01010555</example>
+        </member>
+        <member name="P:LC.Core.Shared.ModelViews.NewAddress.State">
+            <example>SP</example>
+        </member>
+        <member name="P:LC.Core.Shared.ModelViews.NewAddress.City">
+            <example>Santo André</example>
+        </member>
+        <member name="P:LC.Core.Shared.ModelViews.NewAddress.PublicPlace">
+            <example>Rua 10 de Outubro</example>
+        </member>
+        <member name="P:LC.Core.Shared.ModelViews.NewAddress.Number">
+            <example>30</example>
+        </member>
+        <member name="P:LC.Core.Shared.ModelViews.NewAddress.Complement">
+            <example>Apto. 22</example>
+        </member>
         <member name="T:LC.Core.Shared.ModelViews.NewCustomer">
             <summary>
             Object used to create a new customer
