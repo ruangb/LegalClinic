@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace LC.Core
 {
@@ -8,7 +9,7 @@ namespace LC.Core
         public string Name { get; set; }
         public DateTime BirthDate { get; set; }
         public char Gender { get; set; }
-        public string Phone { get; set; }
+        public ICollection<Phones> Phones { get; set; }
         public string Document { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime? UpdateDate { get; set; }
