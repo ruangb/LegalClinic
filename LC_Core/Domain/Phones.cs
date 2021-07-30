@@ -1,6 +1,6 @@
 ﻿namespace LC.Core
 {
-    public class Phones
+    public class Phone
     {
         public int Id { get; set; }
         public string Number{ get; set; }
