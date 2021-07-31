@@ -8,7 +8,7 @@ namespace LC.Data
     {
         public void Configure(EntityTypeBuilder<Phone> builder)
         {
-            builder.HasOne(p => p.Customer).WithMany(p => p.Phones);
+            builder.HasKey(p => new { p.CustomerId, p.Number });
         }
     }
 }
