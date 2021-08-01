@@ -14,6 +14,7 @@ namespace LC.Manager.Mappings
                 .ForMember(d => d.BirthDate, o => o.MapFrom(x => x.BirthDate.Date));
 
             CreateMap<NewAddress, Address>();
+            CreateMap<NewPhone, Phone>();
         }
     }
 }

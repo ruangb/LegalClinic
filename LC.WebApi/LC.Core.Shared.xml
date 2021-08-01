@@ -44,16 +44,16 @@
             </summary>
             <example>M</example>
         </member>
-        <member name="P:LC.Core.Shared.ModelViews.NewCustomer.Phone">
-            <summary>
-            Customer phone
-            </summary>
-            <example>11999999999</example>
-        </member>
         <member name="P:LC.Core.Shared.ModelViews.NewCustomer.Document">
             <summary>
             Customer document
             </summary>
+        </member>
+        <member name="P:LC.Core.Shared.ModelViews.NewPhone.Number">
+            <summary>
+            Customer phone
+            </summary>
+            <example>11999999999</example>
         </member>
     </members>
 </doc>

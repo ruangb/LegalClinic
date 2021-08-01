@@ -18,12 +18,19 @@ namespace LC.Data.Repository
 
         public async Task<IEnumerable<Customer>> GetCustomersAsync()
         {
-            return await context.Customers.Include(p => p.Address).AsNoTracking().ToListAsync();
+            return await context.Customers
+                .Include(p => p.Address)
+                .Include(p => p.Phones)
+                .AsNoTracking()
+                .ToListAsync();
         }
 
         public async Task<Customer> GetCustomerAsync(int id)
         {
-            return await context.Customers.Include(p => p.Address).SingleOrDefaultAsync(p => p.Id == id);
+            return await context.Customers
+                .Include(p => p.Address)
+                .Include(p => p.Phones)
+                .SingleOrDefaultAsync(p => p.Id == id);
         } 
 
         public async Task<Customer> InsertCustomerAsync(Customer customer)
