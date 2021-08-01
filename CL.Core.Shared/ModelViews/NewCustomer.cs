@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace LC.Core.Shared.ModelViews
 {
@@ -25,15 +26,12 @@ namespace LC.Core.Shared.ModelViews
         public char Gender { get; set; }
 
         /// <summary>
-        /// Customer phone
-        /// </summary>
-        /// <example>11999999999</example>
-        public string Phone { get; set; }
-
-        /// <summary>
         /// Customer document
         /// </summary>
         public string Document { get; set; }
         public NewAddress Address{ get; set; }
+
+        public ICollection<NewPhone> Phones { get; set; }
+
     }
 }
