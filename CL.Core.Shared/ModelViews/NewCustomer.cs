@@ -29,8 +29,9 @@ namespace LC.Core.Shared.ModelViews
         /// Customer document
         /// </summary>
         public string Document { get; set; }
-        public NewAddress Address{ get; set; }
 
+        public NewAddress Address{ get; set; }
+        
         public ICollection<NewPhone> Phones { get; set; }
 
     }

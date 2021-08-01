@@ -16,6 +16,7 @@ namespace LC.WebApi.Configuration
                  p.RegisterValidatorsFromAssemblyContaining<NewCustomerValidator>();
                  p.RegisterValidatorsFromAssemblyContaining<UpdateCustomerValidator>();
                  p.RegisterValidatorsFromAssemblyContaining<NewAddressValidator>();
+                 p.RegisterValidatorsFromAssemblyContaining<NewPhoneValidator>();
              });
         }
     }
