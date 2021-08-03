@@ -33,5 +33,34 @@
             </summary>
             <param name="id">customer id</param>
         </member>
+        <member name="M:LC.WebApi.Controllers.DoctorsController.Get">
+            <summary>
+            Return all the customers in the database
+            </summary> 
+        </member>
+        <member name="M:LC.WebApi.Controllers.DoctorsController.Get(System.Int32)">
+            <summary>
+            Return a customer searched by id
+            </summary>
+            <param name="id" example="1">customer id</param>
+        </member>
+        <member name="M:LC.WebApi.Controllers.DoctorsController.Post(LC.Core.Shared.ModelViews.NewDoctor)">
+            <summary>
+            Insert a new customer
+            </summary>
+            <param name="newDoctor">a new customer to insert</param>
+        </member>
+        <member name="M:LC.WebApi.Controllers.DoctorsController.Put(LC.Core.Shared.ModelViews.UpdateDoctor)">
+            <summary>
+            Update a customer
+            </summary>
+            <param name="updateDoctor">custober to be updated</param>
+        </member>
+        <member name="M:LC.WebApi.Controllers.DoctorsController.Delete(System.Int32)">
+            <summary>
+            Delete customer by id
+            </summary>
+            <param name="id">customer id</param>
+        </member>
     </members>
 </doc>
