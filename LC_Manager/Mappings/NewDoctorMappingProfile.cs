@@ -9,8 +9,11 @@ namespace LC.Manager.Mappings
     {
         public NewDoctorMappingProfile()
         {
-            //CreateMap<NewDoctor, Doctor>();
-            CreateMap<NewPhone, Phone>();
+            CreateMap<NewDoctor, Doctor>();
+            CreateMap<Doctor, DoctorView>();
+            CreateMap<Specialty, SpecialtyReference>().ReverseMap();
+            CreateMap<Specialty, SpecialtyView>().ReverseMap();
+            CreateMap<UpdateDoctor, Doctor>().ReverseMap();
         }
     }
 }
