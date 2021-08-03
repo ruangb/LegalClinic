@@ -9,6 +9,8 @@ namespace LC.Data
         public DbSet<Customer> Customers {get; set;}
         public DbSet<Address> Addresses {get; set; }
         public DbSet<Phone> Phones { get; set; }
+        public DbSet<Doctor> Doctors { get; set; }
+        public DbSet<Specialty> Specialties { get; set; }
 
         public LCContext(DbContextOptions options) : base(options)
         {
