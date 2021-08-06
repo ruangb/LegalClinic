@@ -43,23 +43,23 @@ namespace LC.Data.Repository
 
         public async Task<Customer> UpdateCustomerAsync(Customer customer)
         {
-            var foundCustomer = await context.Customers.FindAsync(customer.Id);
+            var searchedCustomer = await context.Customers.FindAsync(customer.Id);
 
-            if (foundCustomer == null)
+            if (searchedCustomer == null)
                 return null;
 
-            context.Entry(foundCustomer).CurrentValues.SetValues(customer);
+            context.Entry(searchedCustomer).CurrentValues.SetValues(customer);
 
             await context.SaveChangesAsync();
 
-            return foundCustomer;
+            return searchedCustomer;
         }
 
         public async Task DeleteCustomerAsync(int id)
         {
-            var foundCustomer = await context.Customers.FindAsync(id);
+            var searchedCustomer = await context.Customers.FindAsync(id);
 
-            context.Customers.Remove(foundCustomer);
+            context.Customers.Remove(searchedCustomer);
 
             await context.SaveChangesAsync();
         }
