@@ -1,5 +1,5 @@
 ﻿using LC.Core;
-using LC.Manager.Interfaces;
+using LC.Manager.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -50,16 +50,29 @@ namespace LC.Data.Repository
 
         public async Task<Doctor> UpdateDoctorAsync(Doctor doctor)
         {
-            var searchedDoctor = await context.Doctors.FindAsync(doctor.Id);
+            var searchedDoctor = await context.Doctors.Include(p => p.Specialties).SingleOrDefaultAsync(p => p.Id == doctor.Id);
 
             if (searchedDoctor == null)
                 return null;
 
             context.Entry(searchedDoctor).CurrentValues.SetValues(doctor);
 
+            await UpdateDoctorSpecialties(doctor, searchedDoctor);
+
             await context.SaveChangesAsync();
 
             return searchedDoctor;
+        }
+
+        private async Task UpdateDoctorSpecialties(Doctor doctor, Doctor searchedDoctor)
+        {
+            searchedDoctor.Specialties.Clear();
+
+            foreach (var specialty in doctor.Specialties)
+            {
+                var searchedSpecialty = await context.Specialties.FindAsync(specialty.Id);
+                searchedDoctor.Specialties.Add(searchedSpecialty);
+            }
         }
 
         public async Task DeleteDoctorAsync(int id)

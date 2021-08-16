@@ -3,7 +3,7 @@ using LC.Core;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace LC.Manager.Interfaces
+namespace LC.Manager.Interfaces.Managers
 {
     public interface ICustomerManager
     {

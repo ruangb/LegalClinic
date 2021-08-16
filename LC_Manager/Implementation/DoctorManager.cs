@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using LC.Core;
 using LC.Core.Shared.ModelViews;
-using LC.Manager.Interfaces;
+using LC.Manager.Interfaces.Repositories;
+using LC.Manager.Interfaces.Managers;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

@@ -1,6 +1,5 @@
 ﻿using LC.Core;
-using LC.Core.Shared.ModelViews;
-using LC.Manager.Interfaces;
+using LC.Manager.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;

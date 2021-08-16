@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace LC.Manager.Interfaces
+namespace LC.Manager.Interfaces.Repositories
 {
     public interface ICustomerRepository
     {

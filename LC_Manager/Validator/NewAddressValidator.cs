@@ -10,10 +10,5 @@ namespace LC.Manager.Validator
         {
             RuleFor(x => x.City).NotNull().NotEmpty().MaximumLength(200);
         }
-
-        private bool IsMorF(char gender)
-        {
-            return gender == 'M' || gender == 'F';
-        }
     }
 }
