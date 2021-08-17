@@ -12,6 +12,9 @@ namespace LC.WebApi.Configuration
         {
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<ICustomerManager, CustomerManager>();
+            services.AddScoped<IDoctorRepository, DoctorRepository>();
+            services.AddScoped<IDoctorManager, DoctorManager>();
+            services.AddScoped<ISpecialtyRepository, SpecialtyRepository>();
         }
     }
 }
