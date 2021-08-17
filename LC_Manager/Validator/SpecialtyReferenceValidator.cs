@@ -1,19 +1,27 @@
-﻿using System;
+﻿using System.Threading.Tasks;
 using FluentValidation;
 using LC.Core.Shared.ModelViews;
+using LC.Manager.Interfaces.Repositories;
 
 namespace LC.Manager.Validator
 {
     public class SpecialtyReferenceValidator : AbstractValidator<SpecialtyReference>
     {
-        public SpecialtyReferenceValidator()
+        private readonly ISpecialtyRepository repository;
+
+        public SpecialtyReferenceValidator(ISpecialtyRepository repository)
         {
-            RuleFor(x => x.Id).NotNull().NotEmpty().GreaterThan(0).Must(ExistsOnBase).WithMessage("Especialidade não cadastrada");
+            this.repository = repository;
+            RuleFor(x => x.Id).NotNull().NotEmpty().GreaterThan(0)
+                .MustAsync(async (id, cancel) => 
+                { 
+                    return await ExistsOnBase(id); 
+                }).WithMessage("Especialidade não cadastrada");
         }
 
-        private bool ExistsOnBase(int id)
+        private async Task<bool> ExistsOnBase(int id)
         {
-            throw new NotImplementedException();
+            return await repository.Exists(id);
         }
     }
 }
