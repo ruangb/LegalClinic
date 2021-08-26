@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace LC.Core
+namespace LC.Core.Domain
 {
     public class Specialty
     {

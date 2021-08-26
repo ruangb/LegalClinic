@@ -1,4 +1,5 @@
 ﻿using LC.Core;
+using LC.Core.Domain;
 using LC.Data.Configuration;
 using Microsoft.EntityFrameworkCore;
 

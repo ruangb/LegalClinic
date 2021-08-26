@@ -1,4 +1,4 @@
-﻿namespace LC.Core
+﻿namespace LC.Core.Domain
 {
     public class Phone
     {

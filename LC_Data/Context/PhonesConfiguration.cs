@@ -1,4 +1,4 @@
-﻿using LC.Core;
+﻿using LC.Core.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
