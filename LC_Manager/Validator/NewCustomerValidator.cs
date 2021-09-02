@@ -12,7 +12,7 @@ namespace LC.Manager.Validator
             RuleFor(x => x.BirthDate).NotNull().NotEmpty().LessThan(DateTime.Now).GreaterThan(DateTime.Now.AddYears(-130));
             RuleFor(x => x.Document).NotNull().NotEmpty().MinimumLength(4).MaximumLength(14);
             RuleFor(x => x.Phones).NotNull().NotEmpty();
-            RuleFor(x => x.Gender).NotNull().NotEmpty().Must(IsMorF).WithMessage("O sexo precisa ser M ou F");
+            RuleFor(x => x.Gender).NotNull();
             RuleFor(x => x.Address).SetValidator(new NewAddressValidator());
         }
 

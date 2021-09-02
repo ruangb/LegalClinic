@@ -1,4 +1,4 @@
-﻿using LC.Core;
+﻿using LC.Core.Domain;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

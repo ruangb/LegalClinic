@@ -1,6 +1,8 @@
 ﻿using LC.Core;
+using LC.Core.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
 
 namespace LC.Data.Configuration
 {
@@ -8,9 +10,10 @@ namespace LC.Data.Configuration
     {
         public void Configure(EntityTypeBuilder<Customer> builder)
         {
-            builder.HasKey(p => p.Id);
             builder.Property(p => p.Name).HasMaxLength(200).IsRequired();
-            builder.Property(p => p.Gender).HasDefaultValue('M').IsRequired();
+            builder.Property(p => p.Gender).HasConversion(
+                p => p.ToString(),
+                p => (Gender)Enum.Parse(typeof(Gender), p));
         }
     }
 }

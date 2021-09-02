@@ -1,4 +1,4 @@
-﻿using LC.Core;
+﻿using LC.Core.Domain;
 using LC.Manager.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
