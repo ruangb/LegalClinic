@@ -9,4 +9,7 @@
     <DocumentationFile>C:\DEV\LegalClinic\LC.WebApi\LC.Core.Shared.xml</DocumentationFile>
   </PropertyGroup>
 
+  <ItemGroup>
+  </ItemGroup>
+
 </Project>
