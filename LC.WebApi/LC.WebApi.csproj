@@ -39,7 +39,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CL.Core.Shared\LC.Core.Shared.csproj" />
+    <ProjectReference Include="..\LC.Core.Shared\LC.Core.Shared.csproj" />
     <ProjectReference Include="..\LC_Core\LC.Core.csproj" />
     <ProjectReference Include="..\LC_Data\LC.Data.csproj" />
   </ItemGroup>
