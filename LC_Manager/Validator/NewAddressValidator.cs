@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using LC.Core.Shared.ModelViews;
+using LC.Core.Shared.ModelViews.Address;
 
 namespace LC.Manager.Validator
 {

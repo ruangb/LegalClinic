@@ -1,8 +1,8 @@
-﻿using LC.Core.Domain;
+﻿using LC.Core.Shared.ModelViews.Address;
 using System;
 using System.Collections.Generic;
 
-namespace LC.Core.Shared.ModelViews
+namespace LC.Core.Shared.ModelViews.Customer
 {
     /// <summary>
     /// Object used to create a new customer

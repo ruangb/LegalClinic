@@ -1,4 +1,4 @@
-﻿using LC.Core.Shared.ModelViews;
+﻿using LC.Core.Shared.ModelViews.Customer;
 using LC.Core;
 using System.Collections.Generic;
 using System.Threading.Tasks;

@@ -15,13 +15,13 @@
             </summary>
             <param name="id" example="1">customer id</param>
         </member>
-        <member name="M:LC.WebApi.Controllers.CustomersController.Post(LC.Core.Shared.ModelViews.NewCustomer)">
+        <member name="M:LC.WebApi.Controllers.CustomersController.Post(LC.Core.Shared.ModelViews.Customer.NewCustomer)">
             <summary>
             Insert a new customer
             </summary>
             <param name="newCustomer">a new customer to insert</param>
         </member>
-        <member name="M:LC.WebApi.Controllers.CustomersController.Put(LC.Core.Shared.ModelViews.UpdateCustomer)">
+        <member name="M:LC.WebApi.Controllers.CustomersController.Put(LC.Core.Shared.ModelViews.Customer.UpdateCustomer)">
             <summary>
             Update a customer
             </summary>

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using LC.Core;
-using LC.Core.Shared.ModelViews;
+using LC.Core.Shared.ModelViews.Customer;
 using System;
 
 namespace LC.Manager.Mappings

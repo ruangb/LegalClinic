@@ -1,6 +1,6 @@
 ﻿using System;
 using FluentValidation;
-using LC.Core.Shared.ModelViews;
+using LC.Core.Shared.ModelViews.Customer;
 
 namespace LC.Manager.Validator
 {

@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using LC.Core;
 using LC.Core.Domain;
-using LC.Core.Shared.ModelViews;
+using LC.Core.Shared.ModelViews.Customer;
+using LC.Core.Shared.ModelViews.Address;
 using System;
+using LC.Core.Shared.ModelViews;
 
 namespace LC.Manager.Mappings
 {

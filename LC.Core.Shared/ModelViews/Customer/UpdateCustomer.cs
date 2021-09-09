@@ -1,4 +1,4 @@
-﻿namespace LC.Core.Shared.ModelViews
+﻿namespace LC.Core.Shared.ModelViews.Customer
 {
     public class UpdateCustomer : NewCustomer
     {

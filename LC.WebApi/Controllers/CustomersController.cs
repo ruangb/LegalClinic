@@ -1,5 +1,5 @@
 ﻿using LC.Core;
-using LC.Core.Shared.ModelViews;
+using LC.Core.Shared.ModelViews.Customer;
 using LC.Manager.Interfaces.Managers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

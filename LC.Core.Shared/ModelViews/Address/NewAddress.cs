@@ -1,12 +1,12 @@
-﻿namespace LC.Core.Shared.ModelViews
+﻿namespace LC.Core.Shared.ModelViews.Address
 {
     public class NewAddress
     {
         ///<example>01010555</example>
         public string ZipCode { get; set; }
-        
+
         ///<example>SP</example>
-        public string State { get; set; }
+        public StateView State { get; set; }
 
         ///<example>Santo André</example>
         public string City { get; set; }
