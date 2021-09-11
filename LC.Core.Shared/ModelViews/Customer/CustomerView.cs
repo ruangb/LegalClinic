@@ -10,9 +10,11 @@ namespace LC.Core.Shared.ModelViews.Customer
         public int Id { get; set; }
         public string Name { get; set; }
         public DateTime BirthDate { get; set; }
-        public Gender Gender { get; set; }
+        public GenderView Gender { get; set; }
         public ICollection<Phone> Phones { get; set; }
         public string Document { get; set; }
+        public DateTime CreateDate { get; set; }
+        public DateTime? UpdateDate { get; set; }
         public NewAddress Address { get; set; }
     }
 }
