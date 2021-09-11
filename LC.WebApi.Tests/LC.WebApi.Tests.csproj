@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LC.Core.Shared\LC.Core.Shared.csproj" />
+    <ProjectReference Include="..\LC.FakeData\LC.FakeData.csproj" />
     <ProjectReference Include="..\LC.WebApi\LC.WebApi.csproj" />
     <ProjectReference Include="..\LC_Core\LC.Core.csproj" />
     <ProjectReference Include="..\LC_Manager\LC.Manager.csproj" />

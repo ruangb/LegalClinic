@@ -1,6 +1,8 @@
 ﻿using Bogus;
 using Bogus.Extensions.Brazil;
 using LC.Core.Shared.ModelViews.Customer;
+using LC.FakeData.AddressData;
+using LC.FakeData.PhoneData;
 
 namespace LC.FakeData.CustomerData
 {
@@ -16,7 +18,8 @@ namespace LC.FakeData.CustomerData
             RuleFor(p => p.Document, f => f.Person.Cpf());
             RuleFor(p => p.CreateDate, f => f.Date.Past());
             RuleFor(p => p.UpdateDate, f => f.Date.Past());
-            RuleFor(p => p.Document, f => f.Person.Cpf());
+            RuleFor(p => p.Phones, f => new PhoneViewFaker().Generate(3));
+            RuleFor(p => p.Address, f => new AddressViewFaker().Generate());
         }
     }
 }
