@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using LC.Core;
+using LC.Core.Domain;
 using LC.Core.Shared.ModelViews.Customer;
 using LC.Manager.Interfaces.Repositories;
 using LC.Manager.Interfaces.Managers;
@@ -19,14 +19,14 @@ namespace LC.Manager.Implementation
             this.mapper = mapper;
         }
 
-        public async Task<IEnumerable<Customer>> GetCustomersAsync()
+        public async Task<IEnumerable<CustomerView>> GetCustomersAsync()
         {
-            return await customerRepository.GetCustomersAsync();
+            return mapper.Map<IEnumerable<Customer>, IEnumerable<CustomerView>>(await customerRepository.GetCustomersAsync());
         }
 
-        public async Task<Customer> GetCustomerAsync(int id)
+        public async Task<CustomerView> GetCustomerAsync(int id)
         {
-            return await customerRepository.GetCustomerAsync(id);
+            return mapper.Map<CustomerView>(await customerRepository.GetCustomerAsync(id));
         }
 
         public async Task<Customer> InsertCustomerAsync(NewCustomer newCustomer)

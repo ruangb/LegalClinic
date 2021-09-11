@@ -1,9 +1,11 @@
-﻿using System;
+﻿using LC.Core.Domain;
+using LC.Core.Shared.ModelViews.Address;
+using System;
 using System.Collections.Generic;
 
-namespace LC.Core.Domain
+namespace LC.Core.Shared.ModelViews.Customer
 {
-    public class Customer
+    public class CustomerView 
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -11,8 +13,6 @@ namespace LC.Core.Domain
         public Gender Gender { get; set; }
         public ICollection<Phone> Phones { get; set; }
         public string Document { get; set; }
-        public DateTime CreateDate { get; set; }
-        public DateTime? UpdateDate { get; set; }
-        public Address Address { get; set; }
+        public NewAddress Address { get; set; }
     }
 }

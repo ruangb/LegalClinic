@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using LC.Core;
+using LC.Core.Domain;
 using LC.Core.Shared.ModelViews.Customer;
 using System;
 
