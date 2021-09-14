@@ -1,5 +1,4 @@
 ﻿using LC.Core.Domain;
-using LC.Core.Shared.ModelViews.Customer;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

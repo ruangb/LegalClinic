@@ -10,42 +10,42 @@ namespace LC.Manager.Implementation
 {
     public class DoctorManager : IDoctorManager
     {
-        private readonly IDoctorRepository customerRepository;
+        private readonly IDoctorRepository doctorRepository;
         private readonly IMapper mapper;
 
-        public DoctorManager(IDoctorRepository customerRepository, IMapper mapper)
+        public DoctorManager(IDoctorRepository doctorRepository, IMapper mapper)
         {
-            this.customerRepository = customerRepository;
+            this.doctorRepository = doctorRepository;
             this.mapper = mapper;
         }
 
         public async Task<IEnumerable<DoctorView>> GetDoctorsAsync()
         {
-            return mapper.Map<IEnumerable<Doctor>, IEnumerable<DoctorView>>(await customerRepository.GetDoctorsAsync());
+            return mapper.Map<IEnumerable<Doctor>, IEnumerable<DoctorView>>(await doctorRepository.GetDoctorsAsync());
         }
 
         public async Task<DoctorView> GetDoctorAsync(int id)
         {
-            return mapper.Map<DoctorView>(await customerRepository.GetDoctorAsync(id));
+            return mapper.Map<DoctorView>(await doctorRepository.GetDoctorAsync(id));
         }
 
         public async Task<Doctor> InsertDoctorAsync(NewDoctor newDoctor)
         {
-            var customer = mapper.Map<Doctor>(newDoctor);
+            var doctor = mapper.Map<Doctor>(newDoctor);
 
-            return await customerRepository.InsertDoctorAsync(customer);
+            return await doctorRepository.InsertDoctorAsync(doctor);
         }
 
         public async Task<Doctor> UpdateDoctorAsync(UpdateDoctor updateDoctor)
         {
-            var customer = mapper.Map<Doctor>(updateDoctor);
+            var doctor = mapper.Map<Doctor>(updateDoctor);
          
-            return await customerRepository.UpdateDoctorAsync(customer);
+            return await doctorRepository.UpdateDoctorAsync(doctor);
         }
 
         public async Task DeleteDoctorAsync(int id)
         {
-            await customerRepository.DeleteDoctorAsync(id);
+            await doctorRepository.DeleteDoctorAsync(id);
         }
     }
 }
