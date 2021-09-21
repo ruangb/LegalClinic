@@ -49,7 +49,12 @@ namespace LC.WebApi.Controllers
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Get(int id)
         {
-            return Ok(await customerManager.GetCustomerAsync(id));
+            var customer = await customerManager.GetCustomerAsync(id);
+
+            if (customer.Id == 0)
+                return NotFound();
+            else
+                return Ok(customer);
         }
 
         /// <summary>
