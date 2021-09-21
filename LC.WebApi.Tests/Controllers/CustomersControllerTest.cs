@@ -56,5 +56,27 @@ namespace LC.WebApi.Tests.Controllers
             result.StatusCode.Should().Be(StatusCodes.Status404NotFound);
         }
 
+        [Fact]
+        public async Task GetById_Ok()
+        {
+            manager.GetCustomerAsync(Arg.Any<int>()).Returns(customerView.TypedClone());
+
+            var result = (ObjectResult)await controller.Get(customerView.Id);
+
+            await manager.Received().GetCustomerAsync(Arg.Any<int>());
+            result.Value.Should().BeEquivalentTo(customerView);
+            result.StatusCode.Should().Be(StatusCodes.Status200OK);
+        }
+
+        [Fact]
+        public async Task GetById_NotFound()
+        {
+            manager.GetCustomerAsync(Arg.Any<int>()).Returns(new CustomerView());
+
+            var result = (StatusCodeResult)await controller.Get(1);
+
+            await manager.Received().GetCustomerAsync(Arg.Any<int>());
+            result.StatusCode.Should().Be(StatusCodes.Status404NotFound);
+        }
     }
 }
