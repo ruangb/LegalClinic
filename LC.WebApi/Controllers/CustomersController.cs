@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SerilogTimings;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace LC.WebApi.Controllers
@@ -31,7 +32,12 @@ namespace LC.WebApi.Controllers
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Get()
         {
-            return Ok(await customerManager.GetCustomersAsync());
+            var customers = await customerManager.GetCustomersAsync();
+
+            if (customers.Any())
+                return Ok(customers);
+            else
+                return NotFound();
         }
 
         /// <summary>

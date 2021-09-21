@@ -15,10 +15,5 @@ namespace LC.Manager.Validator
             RuleFor(x => x.Gender).NotNull();
             RuleFor(x => x.Address).SetValidator(new NewAddressValidator());
         }
-
-        private bool IsMorF(char gender)
-        {
-            return gender == 'M' || gender == 'F';
-        }
     }
 }

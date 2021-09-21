@@ -35,13 +35,26 @@ namespace LC.WebApi.Tests.Controllers
         public async Task Get_Ok()
         {
             var control = new List<CustomerView>();
-
             listCustomerView.ForEach(p => control.Add(p.TypedClone()));
+            manager.GetCustomersAsync().Returns(listCustomerView);
 
-            manager.GetCustomersAsync().Returns(new List<CustomerView> { new CustomerView { Name = "Bla" } });
             var result = (ObjectResult) await controller.Get();
+
+            await manager.Received().GetCustomersAsync();
             result.StatusCode.Should().Be(StatusCodes.Status200OK);
             result.Value.Should().BeEquivalentTo(control);
         }
+
+        [Fact]
+        public async Task Get_NotFound()
+        {
+            manager.GetCustomersAsync().Returns(new List<CustomerView>());
+
+            var result = (StatusCodeResult)await controller.Get();
+
+            await manager.Received().GetCustomersAsync();
+            result.StatusCode.Should().Be(StatusCodes.Status404NotFound);
+        }
+
     }
 }
