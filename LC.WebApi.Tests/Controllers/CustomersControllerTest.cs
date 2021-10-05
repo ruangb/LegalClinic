@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using NSubstitute;
+using NSubstitute.ReturnsExtensions;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
@@ -20,6 +21,7 @@ namespace LC.WebApi.Tests.Controllers
         private readonly CustomersController controller;
         private readonly CustomerView customerView;
         private readonly List<CustomerView> listCustomerView;
+        private readonly NewCustomer newCustomer;
 
         public CustomersControllerTest()
         {
@@ -29,6 +31,7 @@ namespace LC.WebApi.Tests.Controllers
 
             customerView     = new CustomerViewFaker().Generate();
             listCustomerView = new CustomerViewFaker().Generate(10);
+            newCustomer      = new NewCustomerFaker().Generate();
         }
 
         [Fact]
@@ -84,7 +87,56 @@ namespace LC.WebApi.Tests.Controllers
         {
             manager.InsertCustomerAsync(Arg.Any<NewCustomer>()).Returns(customerView.TypedClone());
 
-            //var result = (ObjectResult)await controller.Post();
+            var result = (ObjectResult)await controller.Post(newCustomer);
+
+            await manager.Received().InsertCustomerAsync(Arg.Any<NewCustomer>());
+            result.StatusCode.Should().Be(StatusCodes.Status201Created);
+            result.Value.Should().BeEquivalentTo(customerView);
+        }
+
+        [Fact]
+        public async Task Put_Ok()
+        {
+            manager.UpdateCustomerAsync(Arg.Any<UpdateCustomer>()).Returns(customerView.TypedClone());
+
+            var resultado = (ObjectResult)await controller.Put(new UpdateCustomer());
+
+            await manager.Received().UpdateCustomerAsync(Arg.Any<UpdateCustomer>());
+            resultado.StatusCode.Should().Be(StatusCodes.Status200OK);
+            resultado.Value.Should().BeEquivalentTo(customerView);
+        }
+
+        [Fact]
+        public async Task Put_NotFound()
+        {
+            manager.UpdateCustomerAsync(Arg.Any<UpdateCustomer>()).ReturnsNull();
+
+            var resultado = (StatusCodeResult)await controller.Put(new UpdateCustomer());
+
+            await manager.Received().UpdateCustomerAsync(Arg.Any<UpdateCustomer>());
+            resultado.StatusCode.Should().Be(StatusCodes.Status404NotFound);
+        }
+
+        [Fact]
+        public async Task Delete_NoContent()
+        {
+            manager.DeleteCustomerAsync(Arg.Any<int>()).Returns(customerView);
+
+            var resultado = (StatusCodeResult)await controller.Delete(1);
+
+            await manager.Received().DeleteCustomerAsync(Arg.Any<int>());
+            resultado.StatusCode.Should().Be(StatusCodes.Status204NoContent);
+        }
+
+        [Fact]
+        public async Task NotFound_NotFound()
+        {
+            manager.DeleteCustomerAsync(Arg.Any<int>()).ReturnsNull();
+
+            var resultado = (StatusCodeResult)await controller.Delete(1);
+
+            await manager.Received().DeleteCustomerAsync(Arg.Any<int>());
+            resultado.StatusCode.Should().Be(StatusCodes.Status404NotFound);
         }
     }
 }
