@@ -78,5 +78,13 @@ namespace LC.WebApi.Tests.Controllers
             await manager.Received().GetCustomerAsync(Arg.Any<int>());
             result.StatusCode.Should().Be(StatusCodes.Status404NotFound);
         }
+
+        [Fact]
+        public async Task Post_Created()
+        {
+            manager.InsertCustomerAsync(Arg.Any<NewCustomer>()).Returns(customerView.TypedClone());
+
+            //var result = (ObjectResult)await controller.Post();
+        }
     }
 }

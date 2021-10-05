@@ -62,15 +62,18 @@ namespace LC.WebApi.Controllers
         /// </summary>
         /// <param name="newCustomer">a new customer to insert</param>
         [HttpPost]
-        [ProducesResponseType(typeof(Customer), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(CustomerView), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Post([FromBody] NewCustomer newCustomer)
         {
-            Customer insertedCustomer;
+            logger.LogInformation("Objeto recebido: {@newCustomer}", newCustomer);
+
+            CustomerView insertedCustomer;
 
             using (Operation.Time("Tempo de adição de um novo cliente"))
             {
-                logger.LogInformation("Foi solicitada a inserção de um novo cliente");
+                logger.LogInformation("Foi requisitada a inserção de um novo cliente");
                 insertedCustomer = await customerManager.InsertCustomerAsync(newCustomer);
             }
 

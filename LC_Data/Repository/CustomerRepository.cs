@@ -54,13 +54,18 @@ namespace LC.Data.Repository
             return searchedCustomer;
         }
 
-        public async Task DeleteCustomerAsync(int id)
+        public async Task<Customer> DeleteCustomerAsync(int id)
         {
             var searchedCustomer = await context.Customers.FindAsync(id);
 
-            context.Customers.Remove(searchedCustomer);
+            if (searchedCustomer == null)
+                return null;
+
+            var removedCustomer = context.Customers.Remove(searchedCustomer);
 
             await context.SaveChangesAsync();
+
+            return removedCustomer.Entity;
         }
 
     }

@@ -5,6 +5,7 @@ using LC.Manager.Interfaces.Repositories;
 using LC.Manager.Interfaces.Managers;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace LC.Manager.Implementation
 {
@@ -12,11 +13,13 @@ namespace LC.Manager.Implementation
     {
         private readonly ICustomerRepository customerRepository;
         private readonly IMapper mapper;
+        private readonly ILogger<CustomerManager> logger;
 
-        public CustomerManager(ICustomerRepository customerRepository, IMapper mapper)
+        public CustomerManager(ICustomerRepository customerRepository, IMapper mapper, ILogger<CustomerManager> logger)
         {
             this.customerRepository = customerRepository;
             this.mapper = mapper;
+            this.logger = logger;
         }
 
         public async Task<IEnumerable<CustomerView>> GetCustomersAsync()
@@ -29,23 +32,31 @@ namespace LC.Manager.Implementation
             return mapper.Map<CustomerView>(await customerRepository.GetCustomerAsync(id));
         }
 
-        public async Task<Customer> InsertCustomerAsync(NewCustomer newCustomer)
+        public async Task<CustomerView> InsertCustomerAsync(NewCustomer newCustomer)
         {
+            logger.LogInformation("Chamada de negócio para inserir um cliente.");
+
             var customer = mapper.Map<Customer>(newCustomer);
 
-            return await customerRepository.InsertCustomerAsync(customer);
+            customer = await customerRepository.InsertCustomerAsync(customer);
+
+            return mapper.Map<CustomerView>(customer);
         }
 
-        public async Task<Customer> UpdateCustomerAsync(UpdateCustomer updateCustomer)
+        public async Task<CustomerView> UpdateCustomerAsync(UpdateCustomer updateCustomer)
         {
             var customer = mapper.Map<Customer>(updateCustomer);
-         
-            return await customerRepository.UpdateCustomerAsync(customer);
+
+            customer = await customerRepository.UpdateCustomerAsync(customer);
+
+            return mapper.Map<CustomerView>(customer);
         }
 
-        public async Task DeleteCustomerAsync(int id)
+        public async Task<CustomerView> DeleteCustomerAsync(int id)
         {
-            await customerRepository.DeleteCustomerAsync(id);
+            var cliente = await customerRepository.DeleteCustomerAsync(id);
+
+            return mapper.Map<CustomerView>(cliente);
         }
     }
 }

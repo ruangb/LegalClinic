@@ -9,8 +9,8 @@ namespace LC.Manager.Interfaces.Managers
     {
         Task<CustomerView> GetCustomerAsync(int id);
         Task<IEnumerable<CustomerView>> GetCustomersAsync();
-        Task<Customer> InsertCustomerAsync(NewCustomer customer);
-        Task<Customer> UpdateCustomerAsync(UpdateCustomer customer);
-        Task DeleteCustomerAsync(int id);
+        Task<CustomerView> InsertCustomerAsync(NewCustomer customer);
+        Task<CustomerView> UpdateCustomerAsync(UpdateCustomer customer);
+        Task<CustomerView> DeleteCustomerAsync(int id);
     }
 }
