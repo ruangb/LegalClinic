@@ -1,3 +1,4 @@
+using FluentAssertions;
 using LC.Core.Domain;
 using LC.Data;
 using LC.Data.Repository;
@@ -6,7 +7,9 @@ using LC.Manager.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Xunit;
 
 namespace LC.Repository.Tests.Repository
 {
@@ -25,6 +28,8 @@ namespace LC.Repository.Tests.Repository
 
             context = new LCContext(optionsBuilder.Options);
             repository = new CustomerRepository(context);
+            customer = new Customer();
+            customerFaker = new CustomerFaker();
         }
 
         public async Task<List<Customer>> InsertRecords()
@@ -40,6 +45,25 @@ namespace LC.Repository.Tests.Repository
             await context.SaveChangesAsync();
 
             return customers;
+        }
+
+        [Fact]
+        public async Task GetCustomerAsync_WithReturn()
+        {
+            var registers = await InsertRecords();
+            var _return = await repository.GetCustomersAsync();
+
+            _return.Should().HaveCount(registers.Count);
+            _return.First().Address.Should().NotBeNull();
+            _return.First().Phones.Should().NotBeNull();
+        }
+
+        [Fact]
+        public async Task GetCustomerAsync_Empty()
+        {
+            var _return = await repository.GetCustomersAsync();
+
+            _return.Should().HaveCount(0);
         }
 
         public void Dispose()
