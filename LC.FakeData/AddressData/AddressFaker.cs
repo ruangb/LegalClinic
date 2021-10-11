@@ -5,8 +5,9 @@ namespace LC.FakeData.AddressData
 {
     public class AddressFaker : Faker<Address>
     {
-        public AddressFaker()
+        public AddressFaker(int clientId)
         {
+            RuleFor(o => o.CustomerId, f => clientId);
             RuleFor(p => p.Number, f => f.Address.BuildingNumber());
             RuleFor(p => p.ZipCode, f => f.Address.ZipCode());
             RuleFor(p => p.City, f => f.Address.City());

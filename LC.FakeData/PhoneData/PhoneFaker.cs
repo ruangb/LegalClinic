@@ -5,9 +5,10 @@ namespace LC.FakeData.PhoneData
 {
     public class PhoneFaker : Faker<Phone>
     {
-        public PhoneFaker()
+        public PhoneFaker(int clientId)
         {
-            RuleFor(p => p.Number, f => f.Person.Phone);
+            RuleFor(o => o.CustomerId, f => clientId);
+            RuleFor(o => o.Number, f => f.Person.Phone);
         }
     }
 }

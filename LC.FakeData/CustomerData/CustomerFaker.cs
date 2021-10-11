@@ -19,8 +19,8 @@ namespace LC.FakeData.CustomerData
             RuleFor(p => p.Document, f => f.Person.Cpf());
             RuleFor(p => p.CreateDate, f => f.Date.Past());
             RuleFor(p => p.UpdateDate, f => f.Date.Past());
-            RuleFor(p => p.Phones, f => new PhoneFaker().Generate(3));
-            RuleFor(p => p.Address, f => new AddressFaker().Generate());
+            RuleFor(p => p.Phones, f => new PhoneFaker(id).Generate(3));
+            RuleFor(p => p.Address, f => new AddressFaker(id).Generate());
         }
     }
 }
